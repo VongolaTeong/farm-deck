@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="farm-deck"
+run/main_scene="uid://buejmxosjimcy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=660
+window/size/viewport_height=360
 
 [dotnet]
 
