@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://dvcggnfra15g"]
+[gd_scene load_steps=7 format=4 uid="uid://dvcggnfra15g"]
 
 [ext_resource type="Texture2D" uid="uid://c0qlxs7oyvnpj" path="res://assets/FarmLand_Tile.png" id="1_bw225"]
+[ext_resource type="Script" uid="uid://c7lyqs81shb1h" path="res://crop_plot.gd" id="1_vkr66"]
 [ext_resource type="TileSet" uid="uid://ccjf2vc5v4vfo" path="res://crops.tres" id="2_bw225"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkr66"]
+size = Vector2(143, 143)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ju177"]
 texture = ExtResource("1_bw225")
@@ -14,29 +18,36 @@ sources/1 = SubResource("TileSetAtlasSource_ju177")
 
 [node name="Farm" type="Node2D"]
 
-[node name="FarmLandTileMapLayer" type="TileMapLayer" parent="."]
+[node name="CropPlot" type="Area2D" parent="."]
+script = ExtResource("1_vkr66")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CropPlot"]
+position = Vector2(72.5, 71.5)
+shape = SubResource("RectangleShape2D_vkr66")
+
+[node name="FarmLandTileMapLayer" type="TileMapLayer" parent="CropPlot"]
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_vkr66")
 
-[node name="Crop1TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Crop1TileMapLayer" type="TileMapLayer" parent="CropPlot"]
 position = Vector2(0, -10)
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAA=")
 tile_set = ExtResource("2_bw225")
 
-[node name="Crop2TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Crop2TileMapLayer" type="TileMapLayer" parent="CropPlot"]
 position = Vector2(0, -10)
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAABAAAAAAACAAAAAAACAAAAAAACAAAAAAACAAEAAAACAAAAAAABAAEAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAA=")
 tile_set = ExtResource("2_bw225")
 
-[node name="Crop3TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Crop3TileMapLayer" type="TileMapLayer" parent="CropPlot"]
 position = Vector2(0, -10)
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAAAAAAADAAAAAAABAAAAAAADAAAAAAACAAAAAAADAAAAAAACAAEAAAADAAAAAAABAAEAAAADAAAAAAAAAAEAAAADAAAAAAAAAAIAAAADAAAAAAABAAIAAAADAAAAAAACAAIAAAADAAAAAAA=")
 tile_set = ExtResource("2_bw225")
 
-[node name="Crop4TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Crop4TileMapLayer" type="TileMapLayer" parent="CropPlot"]
 position = Vector2(0, -10)
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAAAAAAAEAAAAAAABAAAAAAAEAAAAAAACAAAAAAAEAAAAAAAAAAEAAAAEAAAAAAABAAEAAAAEAAAAAAACAAEAAAAEAAAAAAAAAAIAAAAEAAAAAAABAAIAAAAEAAAAAAACAAIAAAAEAAAAAAA=")
