@@ -1,7 +1,4 @@
-# crop_plot.gd
 extends Area2D
-
-# This script assumes its children are the TileMap layers in the correct growth order.
 
 var growth_stages = []
 var current_stage: int = 0
@@ -37,7 +34,8 @@ func advance_growth() -> void:
 
 # Hides all stages and shows only the current one.
 func update_visuals() -> void:
-	for i in range(growth_stages.size()):
+	# starts from 1 since we always need to show the farm land
+	for i in range(1, growth_stages.size()):
 		var stage_node = growth_stages[i]
 		if i == current_stage:
 			stage_node.visible = true
