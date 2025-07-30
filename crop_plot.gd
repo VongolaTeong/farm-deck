@@ -1,45 +1,37 @@
-# crop_plot.gd
 extends Area2D
 
-# This script assumes its children are the TileMap layers in the correct growth order.
+@onready var crop1 = $Crop1TileMapLayer
 
-var growth_stages = []
-var current_stage: int = 0
+# key = Vector2i position, value = growth stage int
+var tile_growth: Dictionary = {}
 
 func _ready() -> void:
-	# Get all child nodes that are TileMap layers
-	for child in get_children():
-		if child is TileMapLayer:
-			growth_stages.append(child)
-	
 	# Connect the input_event signal from this Area2D to our handling function
 	input_event.connect(_on_input_event)
-	
-	print("current state", current_stage)
-	# Set the initial visual state
-	update_visuals()
+	hide_crops()
 
 # This function is called when an input event occurs within the Area2D's shape.
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	# Check for a left mouse button click
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		advance_growth()
+		var global_pos = event.position
+		var local_pos = crop1.to_local(global_pos)
+		var tile_pos = crop1.local_to_map(local_pos)
+		advance_tile_growth(tile_pos)
 
-# Advances the crop to the next stage.
-func advance_growth() -> void:
-	# Only advance if not already at the final stage
-	if current_stage < growth_stages.size() - 1:
-		current_stage += 1
-		update_visuals()
+func hide_crops() -> void:
+	crop1.clear()
+	
+func advance_tile_growth(tile_pos: Vector2i) -> void:
+	var stage = tile_growth.get(tile_pos, 0)
+	if stage == 4:
+		print("Tile", tile_pos, "is fully grown")
+		return
 
-	else:
-		print("Crop is fully grown!")
+	# Remove tile from current stage
+	crop1.erase_cell(tile_pos)
 
-# Hides all stages and shows only the current one.
-func update_visuals() -> void:
-	for i in range(growth_stages.size()):
-		var stage_node = growth_stages[i]
-		if i == current_stage:
-			stage_node.visible = true
-		else:
-			stage_node.visible = false
+	# Advance to next stage
+	stage += 1
+	tile_growth[tile_pos] = stage
+	crop1.set_cell(tile_pos, 0, Vector2i(stage, 0))  # Assumes tile index 0 is your crop tile
