@@ -1,9 +1,13 @@
 extends Area2D
 
-@onready var crop1 = $Crop1TileMapLayer
+@onready var crop = $CropTileMapLayer
 
 # key = Vector2i position, value = growth stage int
 var tile_growth: Dictionary = {}
+# key = Vector2i position, value = tile type int
+var tile_type: Dictionary = {}
+
+const TILE_TYPES: Array = [0, 1]
 
 func _ready() -> void:
 	# Connect the input_event signal from this Area2D to our handling function
@@ -15,23 +19,24 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 	# Check for a left mouse button click
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		var global_pos = event.position
-		var local_pos = crop1.to_local(global_pos)
-		var tile_pos = crop1.local_to_map(local_pos)
+		var local_pos = crop.to_local(global_pos)
+		var tile_pos = crop.local_to_map(local_pos)
 		advance_tile_growth(tile_pos)
 
 func hide_crops() -> void:
-	crop1.clear()
+	crop.clear()
 	
 func advance_tile_growth(tile_pos: Vector2i) -> void:
 	var stage = tile_growth.get(tile_pos, 0)
+	var type = tile_type.get(tile_pos, TILE_TYPES[1])
 	if stage == 4:
 		print("Tile", tile_pos, "is fully grown")
 		return
 
 	# Remove tile from current stage
-	crop1.erase_cell(tile_pos)
+	crop.erase_cell(tile_pos)
 
 	# Advance to next stage
 	stage += 1
 	tile_growth[tile_pos] = stage
-	crop1.set_cell(tile_pos, 0, Vector2i(stage, 0))  # Assumes tile index 0 is your crop tile
+	crop.set_cell(tile_pos, 0, Vector2i(stage, type))  # Assumes tile index 0 is your crop tile
