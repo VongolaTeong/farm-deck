@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dvcggnfra15g"]
+[gd_scene load_steps=8 format=4 uid="uid://dvcggnfra15g"]
 
 [ext_resource type="Texture2D" uid="uid://c0qlxs7oyvnpj" path="res://assets/FarmLand_Tile.png" id="1_bw225"]
 [ext_resource type="Script" uid="uid://c7lyqs81shb1h" path="res://crop_plot.gd" id="1_vkr66"]
 [ext_resource type="TileSet" uid="uid://ccjf2vc5v4vfo" path="res://crops.tres" id="2_bw225"]
+[ext_resource type="Texture2D" uid="uid://d0lbt1dya3s38" path="res://assets/melon_seed.PNG" id="4_t23pn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkr66"]
 size = Vector2(143, 143)
@@ -34,3 +35,20 @@ position = Vector2(0, -10)
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAA=")
 tile_set = ExtResource("2_bw225")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MelonSeedButton" type="TextureButton" parent="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_top = 150.0
+offset_right = 48.0
+offset_bottom = 198.0
+texture_normal = ExtResource("4_t23pn")
+stretch_mode = 0
+
+[connection signal="pressed" from="Control/MelonSeedButton" to="CropPlot" method="_on_melon_seed_button_pressed"]
