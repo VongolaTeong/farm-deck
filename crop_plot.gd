@@ -46,3 +46,7 @@ func advance_tile_growth(tile_pos: Vector2i) -> void:
 
 func _on_melon_seed_button_pressed() -> void:
 	selected_seed = TILE_TYPES[1]
+
+
+func _on_corn_seed_button_pressed() -> void:
+	selected_seed = TILE_TYPES[0]
