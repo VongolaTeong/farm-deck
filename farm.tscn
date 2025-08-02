@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://dvcggnfra15g"]
+[gd_scene load_steps=9 format=4 uid="uid://dvcggnfra15g"]
 
 [ext_resource type="Texture2D" uid="uid://c0qlxs7oyvnpj" path="res://assets/FarmLand_Tile.png" id="1_bw225"]
 [ext_resource type="Script" uid="uid://c7lyqs81shb1h" path="res://crop_plot.gd" id="1_vkr66"]
 [ext_resource type="TileSet" uid="uid://ccjf2vc5v4vfo" path="res://crops.tres" id="2_bw225"]
+[ext_resource type="Texture2D" uid="uid://d0lbt1dya3s38" path="res://assets/melon_seed.PNG" id="4_t23pn"]
+[ext_resource type="Texture2D" uid="uid://dliw5xf8h874w" path="res://assets/corn_seed.PNG" id="5_07l7t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkr66"]
 size = Vector2(143, 143)
@@ -29,8 +31,34 @@ shape = SubResource("RectangleShape2D_vkr66")
 tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAACAAEAAQAAAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAIAAQAAAAAAAAABAAIAAQAAAAAAAAACAAIAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_vkr66")
 
-[node name="Crop1TileMapLayer" type="TileMapLayer" parent="CropPlot"]
+[node name="CropTileMapLayer" type="TileMapLayer" parent="CropPlot"]
 position = Vector2(0, -10)
 scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAA=")
 tile_set = ExtResource("2_bw225")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 150.0
+offset_right = 40.0
+offset_bottom = 190.0
+
+[node name="MelonSeedButton" type="TextureButton" parent="Control"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 48.0
+offset_bottom = 48.0
+texture_normal = ExtResource("4_t23pn")
+stretch_mode = 0
+
+[node name="CornSeedButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 48.0
+offset_right = 96.0
+offset_bottom = 48.0
+texture_normal = ExtResource("5_07l7t")
+stretch_mode = 0
+
+[connection signal="pressed" from="Control/MelonSeedButton" to="CropPlot" method="_on_melon_seed_button_pressed"]
+[connection signal="pressed" from="Control/CornSeedButton" to="CropPlot" method="_on_corn_seed_button_pressed"]
