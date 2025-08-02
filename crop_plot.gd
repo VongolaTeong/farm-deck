@@ -4,7 +4,7 @@ extends Area2D
 
 # key = Vector2i position, value = growth stage int
 var tile_growth: Dictionary = {}
-# key = Vector2i position, value = tile type int
+# key = Vector2i position, value = tile type int and crop type int
 var tile_type: Dictionary = {}
 
 const TILE_TYPES: Array = [0, 1]
@@ -34,6 +34,10 @@ func advance_tile_growth(tile_pos: Vector2i) -> void:
 	if stage == 4:
 		print("Tile", tile_pos, "is fully grown")
 		return
+		
+	if (type != selected_seed):
+		print("crop type doesn't match for", tile_pos, "do not grow")
+		return
 
 	# Remove tile from current stage
 	crop.erase_cell(tile_pos)
@@ -41,8 +45,8 @@ func advance_tile_growth(tile_pos: Vector2i) -> void:
 	# Advance to next stage
 	stage += 1
 	tile_growth[tile_pos] = stage
-	crop.set_cell(tile_pos, 0, Vector2i(stage, type))  # Assumes tile index 0 is your crop tile
-
+	tile_type[tile_pos] = selected_seed
+	crop.set_cell(tile_pos, 0, Vector2i(stage, type))
 
 func _on_melon_seed_button_pressed() -> void:
 	selected_seed = TILE_TYPES[1]
