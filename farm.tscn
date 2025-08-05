@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=4 uid="uid://dvcggnfra15g"]
+[gd_scene load_steps=11 format=4 uid="uid://dvcggnfra15g"]
 
 [ext_resource type="Texture2D" uid="uid://c0qlxs7oyvnpj" path="res://assets/FarmLand_Tile.png" id="1_bw225"]
 [ext_resource type="Script" uid="uid://c7lyqs81shb1h" path="res://crop_plot.gd" id="1_vkr66"]
 [ext_resource type="TileSet" uid="uid://ccjf2vc5v4vfo" path="res://crops.tres" id="2_bw225"]
 [ext_resource type="Texture2D" uid="uid://d0lbt1dya3s38" path="res://assets/melon_seed.PNG" id="4_t23pn"]
 [ext_resource type="Texture2D" uid="uid://dliw5xf8h874w" path="res://assets/corn_seed.PNG" id="5_07l7t"]
+[ext_resource type="Texture2D" uid="uid://cc2dkwqoa57fx" path="res://assets/corn.PNG" id="6_jynu1"]
+[ext_resource type="Texture2D" uid="uid://bnk3wqfwdu5b" path="res://assets/melon.PNG" id="7_dmuu5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkr66"]
 size = Vector2(143, 143)
@@ -37,14 +39,14 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAABAAEAAAABAAAAAAAAAAEAAAABAAAAAAAAAAIAAAABAAAAAAABAAIAAAABAAAAAAACAAIAAAABAAAAAAA=")
 tile_set = ExtResource("2_bw225")
 
-[node name="Control" type="Control" parent="."]
+[node name="SeedSelector" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_top = 150.0
 offset_right = 40.0
 offset_bottom = 190.0
 
-[node name="MelonSeedButton" type="TextureButton" parent="Control"]
+[node name="MelonSeedButton" type="TextureButton" parent="SeedSelector"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 0
 offset_right = 48.0
@@ -52,7 +54,7 @@ offset_bottom = 48.0
 texture_normal = ExtResource("4_t23pn")
 stretch_mode = 0
 
-[node name="CornSeedButton" type="TextureButton" parent="Control"]
+[node name="CornSeedButton" type="TextureButton" parent="SeedSelector"]
 layout_mode = 0
 offset_left = 48.0
 offset_right = 96.0
@@ -60,5 +62,44 @@ offset_bottom = 48.0
 texture_normal = ExtResource("5_07l7t")
 stretch_mode = 0
 
-[connection signal="pressed" from="Control/MelonSeedButton" to="CropPlot" method="_on_melon_seed_button_pressed"]
-[connection signal="pressed" from="Control/CornSeedButton" to="CropPlot" method="_on_corn_seed_button_pressed"]
+[node name="CornCounter" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 197.5
+offset_right = 218.5
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CornIcon" type="TextureRect" parent="CornCounter"]
+layout_mode = 2
+texture = ExtResource("6_jynu1")
+stretch_mode = 2
+
+[node name="CornCount" type="Label" parent="CornCounter"]
+layout_mode = 2
+text = "0"
+
+[node name="MelonCounter" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 193.0
+offset_top = 20.0
+offset_right = 223.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MelonIcon" type="TextureRect" parent="MelonCounter"]
+layout_mode = 2
+texture = ExtResource("7_dmuu5")
+stretch_mode = 2
+
+[node name="MelonCount" type="Label" parent="MelonCounter"]
+layout_mode = 2
+text = "0"
+
+[connection signal="pressed" from="SeedSelector/MelonSeedButton" to="CropPlot" method="_on_melon_seed_button_pressed"]
+[connection signal="pressed" from="SeedSelector/CornSeedButton" to="CropPlot" method="_on_corn_seed_button_pressed"]

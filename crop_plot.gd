@@ -11,6 +11,9 @@ const TILE_TYPES: Array = [0, 1]
 
 var selected_seed = TILE_TYPES[0]
 
+@onready var corn_count = $"../CornCounter/CornCount"
+@onready var melon_count = $"../MelonCounter/MelonCount"
+
 # number of harvested crops
 var harvested_crops = [0, 0]
 
@@ -35,6 +38,12 @@ func harvest(tile_pos: Vector2i) -> void:
 	crop.erase_cell(tile_pos)
 	harvested_crops[selected_seed] += 1
 	tile_growth.set(tile_pos, 0)
+	
+	if (selected_seed == 0):
+		corn_count.text = str(harvested_crops[selected_seed])
+	else:
+		melon_count.text = str(harvested_crops[selected_seed])
+	
 	print("harvest crop from ", tile_pos, "current total: ", harvested_crops[selected_seed])
 	
 func advance_tile_growth(tile_pos: Vector2i) -> void:
@@ -60,7 +69,6 @@ func advance_tile_growth(tile_pos: Vector2i) -> void:
 
 func _on_melon_seed_button_pressed() -> void:
 	selected_seed = TILE_TYPES[1]
-
 
 func _on_corn_seed_button_pressed() -> void:
 	selected_seed = TILE_TYPES[0]
