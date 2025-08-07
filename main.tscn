@@ -5,3 +5,4 @@
 [node name="Main" type="Node2D"]
 
 [node name="Farm" parent="." instance=ExtResource("1_ig7tw")]
+visible = false
