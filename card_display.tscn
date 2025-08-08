@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://biilrof2c6meq"]
+
+[node name="CardDisplay" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 165.0
+offset_right = 495.0
+offset_bottom = 360.0
+
+[node name="CardArt" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 330.0
+offset_bottom = 220.0
+
+[node name="CardName" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 220.0
+offset_right = 330.0
+offset_bottom = 250.0
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardDescription" type="Label" parent="Control"]
+layout_mode = 0
+offset_top = 250.0
+offset_right = 330.0
+offset_bottom = 360.0
+text = "description"
+horizontal_alignment = 1
+vertical_alignment = 1
