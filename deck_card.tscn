@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cnfuwg0halwba"]
+
+[ext_resource type="Texture2D" uid="uid://cij560mwtx0ao" path="res://assets/cards/scythe.png" id="1_baeni"]
+
+[node name="DeckCard" type="Node2D"]
+
+[node name="CardThumbnail" type="TextureButton" parent="."]
+offset_right = 132.0
+offset_bottom = 180.0
+texture_normal = ExtResource("1_baeni")
+ignore_texture_size = true
+stretch_mode = 0
