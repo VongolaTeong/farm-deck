@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgkwpjlc7duy"]
+[gd_scene load_steps=2 format=3 uid="uid://dgkwpjlc7duy"]
 
 [ext_resource type="Script" uid="uid://dhha8m74mc4kd" path="res://deck_builder.gd" id="1_gwmgs"]
-[ext_resource type="PackedScene" uid="uid://cnfuwg0halwba" path="res://deck_card.tscn" id="2_sxdv4"]
 
 [node name="DeckBuilder" type="Node2D"]
 script = ExtResource("1_gwmgs")
@@ -15,9 +14,12 @@ color = Color(1, 0.843137, 1, 1)
 offset_right = 660.0
 offset_bottom = 180.0
 
-[node name="AvailableCards" type="GridContainer" parent="."]
+[node name="AvailableCardsScroll" type="ScrollContainer" parent="."]
 offset_top = 180.0
 offset_right = 660.0
 offset_bottom = 360.0
+vertical_scroll_mode = 0
 
-[node name="DeckCard" parent="AvailableCards" instance=ExtResource("2_sxdv4")]
+[node name="AvailableCards" type="GridContainer" parent="AvailableCardsScroll"]
+layout_mode = 2
+columns = 5
