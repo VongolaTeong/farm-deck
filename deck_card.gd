@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 func set_card(data: CardData, is_detailed: bool = false):
 	# Set shared info

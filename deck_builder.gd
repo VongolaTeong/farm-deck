@@ -8,10 +8,7 @@ func _ready():
 	# todo: get from stored json or other storage instead of hardcoded
 	unlocked_cards = [
 		load("res://resources/cards/scythe.tres"),
-		load("res://resources/cards/scythe.tres"),
-		load("res://resources/cards/scythe.tres"),
-		load("res://resources/cards/scythe.tres"),
-		load("res://resources/cards/scythe.tres"),
+		load("res://resources/cards/watering_can.tres"),
 	]
 	var container = $AvailableCardsScroll/AvailableCards
 	
