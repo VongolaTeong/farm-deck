@@ -9,6 +9,11 @@ func _ready():
 	unlocked_cards = [
 		load("res://resources/cards/scythe.tres"),
 		load("res://resources/cards/watering_can.tres"),
+		load("res://resources/cards/scarecrow.tres"),
+		load("res://resources/cards/corn_cob.tres"),
+		load("res://resources/cards/watering_can.tres"),
+		load("res://resources/cards/watering_can.tres"),
+		load("res://resources/cards/watering_can.tres")
 	]
 	var container = $AvailableCardsScroll/AvailableCards
 	

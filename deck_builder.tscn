@@ -20,6 +20,5 @@ offset_right = 660.0
 offset_bottom = 360.0
 vertical_scroll_mode = 0
 
-[node name="AvailableCards" type="GridContainer" parent="AvailableCardsScroll"]
+[node name="AvailableCards" type="HBoxContainer" parent="AvailableCardsScroll"]
 layout_mode = 2
-columns = 5
