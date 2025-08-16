@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://l7o8q5l4ihn2"]
 
-[ext_resource type="Texture2D" uid="uid://chg6w781nomrf" path="res://assets/cards/scarecrow.png" id="1_sautd"]
+[ext_resource type="Texture2D" uid="uid://baud75ccldc5h" path="res://assets/cards/corn_cob.png" id="1_sautd"]
 [ext_resource type="Script" uid="uid://d18hgeovgcxed" path="res://data/card_data.gd" id="2_kcmx7"]
 
 [resource]
 script = ExtResource("2_kcmx7")
-name = "Scarecrow"
-description = "Taunt enemy for 1 turn."
+name = "Corn Cob"
+description = "Deal 1 damage to random enemy for 2~5 times."
 icon = ExtResource("1_sautd")
-cost = 1
-type = "Defend"
+cost = 2
+type = "Attack"
 metadata/_custom_type_script = "uid://d18hgeovgcxed"

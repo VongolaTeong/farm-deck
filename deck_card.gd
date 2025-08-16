@@ -1,5 +1,4 @@
 extends Control
 
-func set_card(data: CardData, is_detailed: bool = false):
-	# Set shared info
+func set_card(data: CardData):
 	$CardThumbnail.texture_normal = data.icon

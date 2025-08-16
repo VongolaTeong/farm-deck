@@ -32,7 +32,6 @@ func _ready():
 		var card_instance = unlocked_card_scene.instantiate()
 		card_instance.set_card(card)
 		container.add_child(card_instance)
-		deck_container.add_child(card_instance)
 
 	for card in deck_cards:
 		var card_instance = deck_card_scene.instantiate()
