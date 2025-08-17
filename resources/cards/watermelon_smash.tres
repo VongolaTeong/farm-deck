@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=3 format=3 uid="uid://bt8t47gfcdqu0"]
+
+[ext_resource type="Texture2D" uid="uid://dcl26wyr3vlyu" path="res://assets/cards/watermelon_smash.png" id="1_5d8io"]
+[ext_resource type="Script" uid="uid://d18hgeovgcxed" path="res://data/card_data.gd" id="2_670cu"]
+
+[resource]
+script = ExtResource("2_670cu")
+name = "Watermelon smash"
+description = "Deal 10 damage to 1 enemy."
+icon = ExtResource("1_5d8io")
+cost = 3
+type = "Attack"
+metadata/_custom_type_script = "uid://d18hgeovgcxed"

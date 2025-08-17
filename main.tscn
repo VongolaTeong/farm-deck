@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://buejmxosjimcy"]
+[gd_scene load_steps=4 format=3 uid="uid://buejmxosjimcy"]
 
+[ext_resource type="PackedScene" uid="uid://dgkwpjlc7duy" path="res://deck_builder.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dvcggnfra15g" path="res://farm.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://biilrof2c6meq" path="res://card_display.tscn" id="3_1bvp3"]
 
 [node name="Main" type="Node2D"]
 
+[node name="DeckBuilder" parent="." instance=ExtResource("1_h2yge")]
+
 [node name="Farm" parent="." instance=ExtResource("1_ig7tw")]
+visible = false
+
+[node name="CardDisplay" parent="." instance=ExtResource("3_1bvp3")]
+visible = false

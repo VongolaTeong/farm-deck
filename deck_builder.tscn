@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgkwpjlc7duy"]
+
+[ext_resource type="Script" uid="uid://dhha8m74mc4kd" path="res://deck_builder.gd" id="1_gwmgs"]
+
+[node name="DeckBuilder" type="Node2D"]
+script = ExtResource("1_gwmgs")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 660.0
+offset_bottom = 360.0
+color = Color(1, 0.843137, 1, 1)
+
+[node name="Deck" type="ScrollContainer" parent="."]
+offset_right = 660.0
+offset_bottom = 180.0
+vertical_scroll_mode = 0
+
+[node name="DeckCards" type="HBoxContainer" parent="Deck"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="AvailableCardsScroll" type="ScrollContainer" parent="."]
+offset_top = 180.0
+offset_right = 660.0
+offset_bottom = 360.0
+vertical_scroll_mode = 0
+
+[node name="AvailableCards" type="HBoxContainer" parent="AvailableCardsScroll"]
+layout_mode = 2
+theme_override_constants/separation = -1
