@@ -2,37 +2,46 @@
 
 [ext_resource type="Script" uid="uid://dm3y7iydvowj0" path="res://card_display.gd" id="1_7bi3o"]
 
-[node name="CardDisplay" type="Node2D"]
+[node name="CardDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_7bi3o")
 
-[node name="Control" type="Control" parent="."]
-clip_contents = true
-layout_mode = 3
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 660.0
+offset_bottom = 360.0
+mouse_filter = 1
+color = Color(0, 0, 0, 1)
+
+[node name="CardPanel" type="Control" parent="."]
 anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardArt" type="TextureRect" parent="CardPanel"]
 offset_left = 165.0
 offset_right = 495.0
-offset_bottom = 360.0
-
-[node name="CardArt" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_right = 330.0
 offset_bottom = 220.0
 expand_mode = 3
 stretch_mode = 5
 
-[node name="CardName" type="Label" parent="Control"]
-layout_mode = 0
+[node name="CardName" type="Label" parent="CardPanel"]
+offset_left = 165.0
 offset_top = 220.0
-offset_right = 330.0
+offset_right = 495.0
 offset_bottom = 250.0
 text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardDescription" type="Label" parent="Control"]
-layout_mode = 0
+[node name="CardDescription" type="Label" parent="CardPanel"]
+offset_left = 165.0
 offset_top = 250.0
-offset_right = 330.0
+offset_right = 495.0
 offset_bottom = 360.0
 text = "description"
 horizontal_alignment = 1

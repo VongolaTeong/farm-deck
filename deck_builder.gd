@@ -41,10 +41,8 @@ func _ready():
 		card_instance.set_card(card)
 		deck_container.add_child(card_instance)
 		card_instance.card_clicked.connect(_on_card_clicked)
-		print("signal connected")
 		
 func _on_card_clicked(card_data: CardData):
-	print("on_card_clicked")
 	var card_display = card_display_scene.instantiate()
 	card_display.set_card(card_data)
 	add_child(card_display)

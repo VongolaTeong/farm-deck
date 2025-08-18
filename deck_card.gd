@@ -12,5 +12,4 @@ func _ready():
 	$CardThumbnail.pressed.connect(_on_card_pressed)
 
 func _on_card_pressed():
-	print("on_card_pressed")
 	emit_signal("card_clicked", card_data)
