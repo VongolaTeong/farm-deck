@@ -12,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_7bi3o")
 
 [node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 660.0
 offset_bottom = 360.0
 mouse_filter = 1
@@ -19,29 +20,30 @@ color = Color(0, 0, 0, 1)
 
 [node name="CardPanel" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 165.0
+offset_right = 525.0
+offset_bottom = 360.0
 
 [node name="CardArt" type="TextureRect" parent="CardPanel"]
-offset_left = 165.0
-offset_right = 495.0
+layout_mode = 0
+offset_right = 330.0
 offset_bottom = 220.0
 expand_mode = 3
 stretch_mode = 5
 
 [node name="CardName" type="Label" parent="CardPanel"]
-offset_left = 165.0
+layout_mode = 0
 offset_top = 220.0
-offset_right = 495.0
+offset_right = 330.0
 offset_bottom = 250.0
 text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CardDescription" type="Label" parent="CardPanel"]
-offset_left = 165.0
+layout_mode = 0
 offset_top = 250.0
-offset_right = 495.0
+offset_right = 330.0
 offset_bottom = 360.0
 text = "description"
 horizontal_alignment = 1
