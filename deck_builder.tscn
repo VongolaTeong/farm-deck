@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgkwpjlc7duy"]
+[gd_scene load_steps=3 format=3 uid="uid://dgkwpjlc7duy"]
 
 [ext_resource type="Script" uid="uid://dhha8m74mc4kd" path="res://deck_builder.gd" id="1_gwmgs"]
+[ext_resource type="Script" uid="uid://c7ggnlbryx0vo" path="res://deck_cards.gd" id="2_sxdv4"]
 
 [node name="DeckBuilder" type="Node2D"]
 script = ExtResource("1_gwmgs")
@@ -18,6 +19,7 @@ vertical_scroll_mode = 0
 [node name="DeckCards" type="HBoxContainer" parent="Deck"]
 layout_mode = 2
 theme_override_constants/separation = -1
+script = ExtResource("2_sxdv4")
 
 [node name="AvailableCardsScroll" type="ScrollContainer" parent="."]
 offset_top = 180.0

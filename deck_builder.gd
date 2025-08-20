@@ -22,12 +22,7 @@ func _ready():
 		load("res://resources/cards/watering_can.tres")
 	]
 	
-	deck_cards = [
-		load("res://resources/cards/scythe.tres"),
-		load("res://resources/cards/watering_can.tres"),
-		load("res://resources/cards/scarecrow.tres"),
-		load("res://resources/cards/corn_cob.tres"),
-	]
+	deck_cards = []
 	var container = $AvailableCardsScroll/AvailableCards
 	var deck_container = $Deck/DeckCards
 	

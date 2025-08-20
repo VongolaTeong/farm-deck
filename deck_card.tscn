@@ -13,6 +13,7 @@ script = ExtResource("1_0bqy3")
 layout_mode = 0
 offset_right = 132.0
 offset_bottom = 180.0
+mouse_filter = 1
 texture_normal = ExtResource("1_baeni")
 ignore_texture_size = true
 stretch_mode = 0
