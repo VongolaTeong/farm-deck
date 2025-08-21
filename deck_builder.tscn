@@ -18,6 +18,9 @@ vertical_scroll_mode = 0
 
 [node name="DeckCards" type="HBoxContainer" parent="Deck"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
 theme_override_constants/separation = -1
 script = ExtResource("2_sxdv4")
 
