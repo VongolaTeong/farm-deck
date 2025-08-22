@@ -25,6 +25,7 @@ func _ready():
 	deck_cards = []
 	var container = $AvailableCardsScroll/AvailableCards
 	var deck_container = $Deck/DeckCards
+	deck_container.card_dropped.connect(_on_card_dropped)
 	
 	for card in unlocked_cards:
 		var card_instance = unlocked_card_scene.instantiate()
@@ -45,3 +46,9 @@ func _on_card_clicked(card_data: CardData):
 
 	# Optional: make sure it’s on top
 	card_display.z_index = 999
+
+func _on_card_dropped(card_data: CardData):
+	deck_cards.append(card_data)
+	var card_instance = deck_card_scene.instantiate()
+	card_instance.set_card(card_data)
+	$Deck/DeckCards.add_child(card_instance)
