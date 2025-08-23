@@ -44,10 +44,13 @@ func _on_card_clicked(card_data: CardData):
 	card_display.set_card(card_data)
 	add_child(card_display)
 
-	# Optional: make sure it’s on top
 	card_display.z_index = 999
 
 func _on_card_dropped(card_data: CardData):
+	# todo: maybe allow certain amount of duplicates
+	if card_data in deck_cards:
+		print("Card already in deck, skipping")
+		return
 	deck_cards.append(card_data)
 	var card_instance = deck_card_scene.instantiate()
 	card_instance.set_card(card_data)
