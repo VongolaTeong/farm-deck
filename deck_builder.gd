@@ -26,6 +26,7 @@ func _ready():
 	var container = $AvailableCardsScroll/AvailableCards
 	var deck_container = $Deck/DeckCards
 	deck_container.card_dropped.connect(_on_card_dropped)
+	container.card_removed.connect(_on_card_removed)
 	
 	for card in unlocked_cards:
 		var card_instance = unlocked_card_scene.instantiate()
@@ -55,3 +56,13 @@ func _on_card_dropped(card_data: CardData):
 	var card_instance = deck_card_scene.instantiate()
 	card_instance.set_card(card_data)
 	$Deck/DeckCards.add_child(card_instance)
+
+func _on_card_removed(card_data: CardData):
+	print("on card remove", card_data)
+	var idx = deck_cards.find(card_data)
+	if idx != -1:
+		deck_cards.remove_at(idx)
+		
+	for node in $Deck/DeckCards.get_children():
+		if node.card_data == card_data:
+			node.queue_free()

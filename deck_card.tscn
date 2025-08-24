@@ -7,6 +7,7 @@
 custom_minimum_size = Vector2(132, 180)
 layout_mode = 3
 anchors_preset = 0
+mouse_filter = 1
 script = ExtResource("1_0bqy3")
 
 [node name="CardThumbnail" type="TextureButton" parent="."]
