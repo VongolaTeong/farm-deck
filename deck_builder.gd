@@ -17,9 +17,6 @@ func _ready():
 		load("res://resources/cards/watering_can.tres"),
 		load("res://resources/cards/scarecrow.tres"),
 		load("res://resources/cards/corn_cob.tres"),
-		load("res://resources/cards/watering_can.tres"),
-		load("res://resources/cards/watering_can.tres"),
-		load("res://resources/cards/watering_can.tres")
 	]
 	
 	deck_cards = []
