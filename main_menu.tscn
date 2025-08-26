@@ -1,10 +1,13 @@
-[gd_scene format=3 uid="uid://cevtr6u8lu7tw"]
+[gd_scene load_steps=2 format=3 uid="uid://cevtr6u8lu7tw"]
+
+[ext_resource type="Script" uid="uid://cb6x0xukipq7h" path="res://main_menu.gd" id="1_06t4h"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 660.0
 offset_bottom = 360.0
+script = ExtResource("1_06t4h")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
@@ -35,3 +38,6 @@ offset_right = 30.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Cards"
+
+[connection signal="pressed" from="FarmButton" to="." method="_on_farm_button_pressed"]
+[connection signal="pressed" from="CardButton" to="." method="_on_card_button_pressed"]
