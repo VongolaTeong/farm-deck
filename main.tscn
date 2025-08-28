@@ -17,3 +17,6 @@ visible = false
 visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource("4_1bvp3")]
+
+[connection signal="hide_deck_builder" from="DeckBuilder" to="MainMenu" method="_on_deck_builder_hide_deck_builder"]
+[connection signal="hide_farm" from="Farm" to="MainMenu" method="_on_farm_hide_farm"]
