@@ -111,4 +111,4 @@ text = "X"
 
 [connection signal="pressed" from="SeedSelector/MelonSeedButton" to="CropPlot" method="_on_melon_seed_button_pressed"]
 [connection signal="pressed" from="SeedSelector/CornSeedButton" to="CropPlot" method="_on_corn_seed_button_pressed"]
-[connection signal="pressed" from="CloseButton" to="CropPlot" method="_on_close_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
