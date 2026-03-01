@@ -5,6 +5,7 @@ extends Node2D
 @export var unlocked_card_scene: PackedScene
 @export var deck_card_scene: PackedScene
 @export var card_display_scene: PackedScene
+signal hide_deck_builder()
 
 func _ready():
 	deck_card_scene = load("res://deck_card.tscn")
@@ -17,9 +18,6 @@ func _ready():
 		load("res://resources/cards/watering_can.tres"),
 		load("res://resources/cards/scarecrow.tres"),
 		load("res://resources/cards/corn_cob.tres"),
-		load("res://resources/cards/watering_can.tres"),
-		load("res://resources/cards/watering_can.tres"),
-		load("res://resources/cards/watering_can.tres")
 	]
 	
 	deck_cards = []
@@ -66,3 +64,6 @@ func _on_card_removed(card_data: CardData):
 	for node in $Deck/DeckCards.get_children():
 		if node.card_data == card_data:
 			node.queue_free()
+
+func _on_close_button_pressed() -> void:
+	emit_signal("hide_deck_builder")

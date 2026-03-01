@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://dvcggnfra15g"]
+[gd_scene load_steps=12 format=4 uid="uid://dvcggnfra15g"]
 
 [ext_resource type="Texture2D" uid="uid://c0qlxs7oyvnpj" path="res://assets/FarmLand_Tile.png" id="1_bw225"]
+[ext_resource type="Script" uid="uid://h48wgettq66c" path="res://farm.gd" id="1_v46g0"]
 [ext_resource type="Script" uid="uid://c7lyqs81shb1h" path="res://crop_plot.gd" id="1_vkr66"]
 [ext_resource type="TileSet" uid="uid://ccjf2vc5v4vfo" path="res://crops.tres" id="2_bw225"]
 [ext_resource type="Texture2D" uid="uid://d0lbt1dya3s38" path="res://assets/melon_seed.PNG" id="4_t23pn"]
@@ -21,6 +22,7 @@ tile_size = Vector2i(48, 48)
 sources/1 = SubResource("TileSetAtlasSource_ju177")
 
 [node name="Farm" type="Node2D"]
+script = ExtResource("1_v46g0")
 
 [node name="CropPlot" type="Area2D" parent="."]
 script = ExtResource("1_vkr66")
@@ -101,5 +103,12 @@ stretch_mode = 2
 layout_mode = 2
 text = "0"
 
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 640.0
+offset_right = 660.0
+offset_bottom = 31.0
+text = "X"
+
 [connection signal="pressed" from="SeedSelector/MelonSeedButton" to="CropPlot" method="_on_melon_seed_button_pressed"]
 [connection signal="pressed" from="SeedSelector/CornSeedButton" to="CropPlot" method="_on_corn_seed_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]

@@ -38,3 +38,11 @@ size_flags_vertical = 3
 mouse_filter = 0
 theme_override_constants/separation = -1
 script = ExtResource("3_pcmq2")
+
+[node name="CloseButton" type="Button" parent="."]
+offset_left = 640.0
+offset_right = 660.0
+offset_bottom = 31.0
+text = "X"
+
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
