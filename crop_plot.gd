@@ -7,15 +7,16 @@ var tile_growth: Dictionary = {}
 # key = Vector2i position, value = tile type int and crop type int
 var tile_type: Dictionary = {}
 
-const TILE_TYPES: Array = [0, 1]
+const TILE_TYPES: Array[int] = [0, 1]
+const MAX_GROWTH_STAGE: int = 4
 
-var selected_seed = TILE_TYPES[0]
+var selected_seed: int = TILE_TYPES[0]
 
 @onready var corn_count = $"../CornCounter/CornCount"
 @onready var melon_count = $"../MelonCounter/MelonCount"
 
 # number of harvested crops
-var harvested_crops = [0, 0]
+var harvested_crops: Array[int] = [0, 0]
 
 func _ready() -> void:
 	# Connect the input_event signal from this Area2D to our handling function
@@ -35,27 +36,24 @@ func hide_crops() -> void:
 	crop.clear()
 	
 func harvest(tile_pos: Vector2i) -> void:
+	var crop_type: int = tile_type.get(tile_pos, selected_seed)
 	crop.erase_cell(tile_pos)
-	harvested_crops[selected_seed] += 1
+	harvested_crops[crop_type] += 1
 	tile_growth.set(tile_pos, 0)
-	
-	if (selected_seed == 0):
-		corn_count.text = str(harvested_crops[selected_seed])
+
+	if crop_type == 0:
+		corn_count.text = str(harvested_crops[crop_type])
 	else:
-		melon_count.text = str(harvested_crops[selected_seed])
-	
-	print("harvest crop from ", tile_pos, "current total: ", harvested_crops[selected_seed])
+		melon_count.text = str(harvested_crops[crop_type])
 	
 func advance_tile_growth(tile_pos: Vector2i) -> void:
 	var stage = tile_growth.get(tile_pos, 0)
 	var type = tile_type.get(tile_pos, selected_seed)
-	if stage == 4:
-		print("Tile", tile_pos, "is fully grown")
+	if stage == MAX_GROWTH_STAGE:
 		harvest(tile_pos)
 		return
-		
-	if (type != selected_seed && stage != 0):
-		print("crop type doesn't match for", tile_pos, "do not grow")
+
+	if type != selected_seed && stage != 0:
 		return
 
 	# Remove tile from current stage
