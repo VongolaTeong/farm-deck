@@ -74,6 +74,19 @@ func test_harvest_does_not_increment_wrong_crop_counter():
 		crop_plot.advance_tile_growth(pos)
 	assert_eq(crop_plot.harvested_crops[1], melon_before)
 
+func test_harvest_uses_tile_crop_type_not_selected_seed():
+	# Plant corn, switch to melon before harvesting — corn counter must go up, not melon
+	var pos = Vector2i(4, 1)
+	crop_plot.selected_seed = 0
+	for i in range(4):
+		crop_plot.advance_tile_growth(pos)
+	crop_plot.selected_seed = 1  # switch seed before harvest
+	var corn_before = crop_plot.harvested_crops[0]
+	var melon_before = crop_plot.harvested_crops[1]
+	crop_plot.advance_tile_growth(pos)
+	assert_eq(crop_plot.harvested_crops[0], corn_before + 1, "Corn counter should increment")
+	assert_eq(crop_plot.harvested_crops[1], melon_before, "Melon counter should not change")
+
 # --- Seed Type Mismatch ---
 
 func test_wrong_seed_type_does_not_advance_existing_crop():

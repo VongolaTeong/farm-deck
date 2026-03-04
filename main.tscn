@@ -1,22 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://buejmxosjimcy"]
+[gd_scene format=3 uid="uid://buejmxosjimcy"]
 
 [ext_resource type="PackedScene" uid="uid://dgkwpjlc7duy" path="res://deck_builder.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://dvcggnfra15g" path="res://farm.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://biilrof2c6meq" path="res://card_display.tscn" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cevtr6u8lu7tw" path="res://main_menu.tscn" id="4_1bvp3"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" unique_id=2013726460]
 
-[node name="DeckBuilder" parent="." instance=ExtResource("1_h2yge")]
+[node name="DeckBuilder" parent="." unique_id=1203780865 instance=ExtResource("1_h2yge")]
 visible = false
 
-[node name="Farm" parent="." instance=ExtResource("1_ig7tw")]
+[node name="Farm" parent="." unique_id=811373285 instance=ExtResource("1_ig7tw")]
 visible = false
 
-[node name="CardDisplay" parent="." instance=ExtResource("3_1bvp3")]
+[node name="CardDisplay" parent="." unique_id=530778963 instance=ExtResource("3_1bvp3")]
 visible = false
 
-[node name="MainMenu" parent="." instance=ExtResource("4_1bvp3")]
+[node name="MainMenu" parent="." unique_id=376931215 instance=ExtResource("4_1bvp3")]
 
 [connection signal="hide_deck_builder" from="DeckBuilder" to="MainMenu" method="_on_deck_builder_hide_deck_builder"]
 [connection signal="hide_farm" from="Farm" to="MainMenu" method="_on_farm_hide_farm"]
